@@ -1,8 +1,6 @@
-// src/pages/GreatPyramid.js
 import React, { useState } from 'react';
 import { Card, Table, Button, Modal } from 'antd';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
+import "../App.css";
 
 const dataSource = [
   { key: '1', attribute: 'Дата побудови', value: '2560 р. до н.е.' },
@@ -24,11 +22,11 @@ const GreatPyramid = () => {
 
   return (
     <div>
-      <Card
-        title="Піраміда Хеопса"
-        bordered={false}
-        cover={<img alt="Great Pyramid" src="/assets/images/pyramid.jpg" />}
-      >
+      <h4>Піраміда Хеопса</h4>
+      <div className="image-container">
+        <img alt="Great Pyramid" src="https://pohcdn.com/guide/sites/default/files/styles/paragraph__hero_banner__hb_image__1880bp/public/hero_banner/the-pyramid-of-cheops_optimized.jpg" width='80%' height='auto' />
+      </div>
+      <Card>
         <p>Піраміда Хеопса — єдине збережене чудо світу...</p>
         <Table dataSource={dataSource} columns={columns} pagination={false} />
         <Button type="primary" onClick={showModal}>
@@ -38,14 +36,6 @@ const GreatPyramid = () => {
           <p>Піраміда Хеопса була побудована для фараона Хуфу...</p>
         </Modal>
       </Card>
-      
-      <h3>Розташування на мапі:</h3>
-      <MapContainer center={[29.9792, 31.1342]} zoom={13} style={{ height: '400px', width: '100%' }}>
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <Marker position={[29.9792, 31.1342]}>
-          <Popup>Піраміда Хеопса знаходиться тут.</Popup>
-        </Marker>
-      </MapContainer>
     </div>
   );
 };

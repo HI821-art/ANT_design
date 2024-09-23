@@ -1,8 +1,6 @@
-// src/pages/ColossusOfRhodes.js
 import React, { useState } from 'react';
 import { Card, Table, Button, Modal } from 'antd';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
+import "../App.css";
 
 const dataSource = [
   { key: '1', attribute: 'Дата побудови', value: '280 р. до н.е.' },
@@ -24,28 +22,20 @@ const ColossusOfRhodes = () => {
 
   return (
     <div>
-      <Card
-        title="Колос Родоський"
-        bordered={false}
-        cover={<img alt="Colossus of Rhodes" src="/assets/images/colossus.jpg" />}
-      >
-        <p>Колос Родоський — величезна статуя бога Сонця Геліоса...</p>
+      <h4>Колос Родоський</h4>
+      <div className="image-container">
+        <img alt="Colossus of Rhodes" src="https://pro-cikave.com.ua/wp-content/uploads/2022/04/11750981.jpg" width='80%' height='auto' />
+      </div>
+      <Card>
+        <p>Колос Родоський — одна з найбільших статуй античності...</p>
         <Table dataSource={dataSource} columns={columns} pagination={false} />
         <Button type="primary" onClick={showModal}>
           Детальніше
         </Button>
         <Modal title="Деталі про Колос Родоський" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-          <p>Статуя була зруйнована під час землетрусу у 226 році до н.е...</p>
+          <p>Статуя була знищена під час землетрусу...</p>
         </Modal>
       </Card>
-      
-      <h3>Розташування на мапі:</h3>
-      <MapContainer center={[36.4470, 28.2340]} zoom={13} style={{ height: '400px', width: '100%' }}>
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <Marker position={[36.4470, 28.2340]}>
-          <Popup>Колос Родоський знаходився тут.</Popup>
-        </Marker>
-      </MapContainer>
     </div>
   );
 };

@@ -1,14 +1,13 @@
-// src/pages/HangingGardens.js
 import React, { useState } from 'react';
 import { Card, Table, Button, Modal } from 'antd';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
+import "../App.css";
 
 const dataSource = [
   { key: '1', attribute: 'Дата побудови', value: '600 р. до н.е.' },
   { key: '2', attribute: 'Місце розташування', value: 'Вавилон, Ірак' },
   { key: '3', attribute: 'Архітектор', value: 'Не відомо' },
 ];
+
 
 const columns = [
   { title: 'Атрибут', dataIndex: 'attribute', key: 'attribute' },
@@ -24,28 +23,20 @@ const HangingGardens = () => {
 
   return (
     <div>
-      <Card
-        title="Висячі сади Семіраміди"
-        bordered={false}
-        cover={<img alt="Hanging Gardens" src="/assets/images/hanging_gardens.jpg" />}
-      >
-        <p>Висячі сади Семіраміди — одне з семи чудес світу...</p>
+      <h4>Підвісні сади</h4>
+      <div className="image-container">
+        <img alt="Hanging Gardens" src="https://3.bp.blogspot.com/-yDY55aoDflg/WAyJJijSGiI/AAAAAAAAABw/luoa3Z-pxgIGVd8Yym2hfSMCP7t2PkePQCLcB/w1200-h630-p-k-no-nu/jardines-colgantes-babilonia-L-C3_MKL.jpeg" width='80%' height='auto' />
+      </div>
+      <Card>
+        <p>Підвісні сади Вавилона — одне з найбільш загадкових чудес світу...</p>
         <Table dataSource={dataSource} columns={columns} pagination={false} />
         <Button type="primary" onClick={showModal}>
           Детальніше
         </Button>
-        <Modal title="Деталі про Висячі сади" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-          <p>Достовірність їх існування досі під питанням...</p>
+        <Modal title="Деталі про Підвісні сади" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+          <p>Про існування садів досі ведуться дискусії...</p>
         </Modal>
       </Card>
-      
-      <h3>Розташування на мапі:</h3>
-      <MapContainer center={[32.5373, 44.4207]} zoom={13} style={{ height: '400px', width: '100%' }}>
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <Marker position={[32.5373, 44.4207]}>
-          <Popup>Висячі сади знаходилися тут.</Popup>
-        </Marker>
-      </MapContainer>
     </div>
   );
 };

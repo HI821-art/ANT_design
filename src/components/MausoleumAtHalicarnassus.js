@@ -1,8 +1,6 @@
-// src/pages/MausoleumAtHalicarnassus.js
 import React, { useState } from 'react';
 import { Card, Table, Button, Modal } from 'antd';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import 'leaflet/dist/leaflet.css';
+import "../App.css";
 
 const dataSource = [
   { key: '1', attribute: 'Дата побудови', value: '350 р. до н.е.' },
@@ -24,28 +22,20 @@ const MausoleumAtHalicarnassus = () => {
 
   return (
     <div>
-      <Card
-        title="Мавзолей в Галікарнасі"
-        bordered={false}
-        cover={<img alt="Mausoleum at Halicarnassus" src="/assets/images/mausoleum.jpg" />}
-      >
+      <h4>Мавзолей в Галікарнасі</h4>
+      <div className="image-container">
+        <img alt="Mausoleum at Halicarnassus" src="https://1.bp.blogspot.com/-sT2vkOsGfXg/WAyLoQoeYGI/AAAAAAAAACI/mILiKQvnlag39yTPiUFsf0BFXIUlBPFHwCLcB/s1600/Mavzoley-v-Galikarnase.jpg" width='80%' height='auto' />
+      </div>
+      <Card>
         <p>Мавзолей в Галікарнасі — один з найбільших мавзолеїв античності...</p>
         <Table dataSource={dataSource} columns={columns} pagination={false} />
         <Button type="primary" onClick={showModal}>
           Детальніше
         </Button>
-        <Modal title="Деталі про Мавзолей" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
-          <p>Мавзолей був зруйнований внаслідок землетрусів у середньовіччі...</p>
+        <Modal title="Деталі про Мавзолей в Галікарнасі" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+          <p>Мавзолей був знищений внаслідок землетрусів...</p>
         </Modal>
       </Card>
-      
-      <h3>Розташування на мапі:</h3>
-      <MapContainer center={[37.0365, 27.4294]} zoom={13} style={{ height: '400px', width: '100%' }}>
-        <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <Marker position={[37.0365, 27.4294]}>
-          <Popup>Мавзолей знаходився тут.</Popup>
-        </Marker>
-      </MapContainer>
     </div>
   );
 };
